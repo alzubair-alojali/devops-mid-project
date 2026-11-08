@@ -1,0 +1,32 @@
+services:
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]   # write every change to disk
+    volumes:
+      - redis-data:/data                               # named volume keeps data after restarts
+    restart: unless-stopped
+
+  app1:
+    build: ./app1
+    image: devopshub-app1
+    environment:
+      REDIS_HOST: redis                                # service name, resolved by Compose DNS
+    ports:
+      - "5001:5000"
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  app2:
+    build: ./app2
+    image: devopshub-app2
+    environment:
+      REDIS_HOST: redis
+    ports:
+      - "5002:5000"
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+volumes:
+  redis-data:
