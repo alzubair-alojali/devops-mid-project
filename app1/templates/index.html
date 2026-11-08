@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DevOpsHub – Feedback</title>
+  <style>
+    :root {
+      --bg: #FAFAF9;
+      --surface: #FFFFFF;
+      --border: #E7E5E4;
+      --text: #1C1917;
+      --muted: #78716C;
+      --accent: #0F766E;
+      --accent-hover: #115E59;
+      --radius: 10px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.5;
+    }
+    main { max-width: 640px; margin: 0 auto; padding: 48px 24px; }
+    .label {
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 8px;
+    }
+    h1 { font-size: 28px; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 8px; }
+    .lead { color: var(--muted); margin: 0 0 32px; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .notice { display: flex; align-items: center; gap: 8px; margin: 0 0 16px; font-size: 14px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+    label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px; }
+    textarea {
+      width: 100%;
+      min-height: 140px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font: inherit;
+      color: inherit;
+      background: var(--surface);
+      resize: vertical;
+    }
+    textarea:focus { outline: none; border-color: var(--accent); }
+    button {
+      margin-top: 16px;
+      height: 40px;
+      padding: 0 20px;
+      border: 0;
+      border-radius: var(--radius);
+      background: var(--accent);
+      color: #fff;
+      font: inherit;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    button:hover { background: var(--accent-hover); }
+    button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="label">DevOpsHub</p>
+    <h1>Send us your feedback</h1>
+    <p class="lead">Suggestions, comments or ideas. We read every message.</p>
+
+    {% if sent %}
+    <p class="notice"><span class="dot"></span>Thanks, your message was received.</p>
+    {% endif %}
+
+    <form class="card" method="post" action="/submit">
+      <label for="message">Your message</label>
+      <textarea id="message" name="message" required maxlength="500"></textarea>
+      <button type="submit">Send message</button>
+    </form>
+  </main>
+</body>
+</html>
