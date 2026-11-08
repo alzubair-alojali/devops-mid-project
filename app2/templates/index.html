@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DevOpsHub – Dashboard</title>
+  <style>
+    :root {
+      --bg: #FAFAF9;
+      --surface: #FFFFFF;
+      --border: #E7E5E4;
+      --text: #1C1917;
+      --muted: #78716C;
+      --accent: #0F766E;
+      --accent-hover: #115E59;
+      --radius: 10px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.5;
+    }
+    main { max-width: 640px; margin: 0 auto; padding: 48px 24px; }
+    .label {
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 8px;
+    }
+    h1 { font-size: 28px; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 8px; }
+    .lead { color: var(--muted); margin: 0 0 32px; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin: 0 0 24px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .caption { font-size: 14px; color: var(--muted); margin: 0 0 8px; }
+    .number {
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      font-variant-numeric: tabular-nums;
+      margin: 0;
+    }
+    .status { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); margin: 0; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+    @media (max-width: 480px) {
+      .stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="label">DevOpsHub</p>
+    <h1>Dashboard</h1>
+    <p class="lead">Live numbers from Redis. Reload the page to refresh.</p>
+
+    <section class="stats" aria-label="Statistics">
+      <div class="card">
+        <p class="caption">Messages collected</p>
+        <p class="number">{{ total_messages }}</p>
+      </div>
+      <div class="card">
+        <p class="caption">Page visits</p>
+        <p class="number">{{ total_visits }}</p>
+      </div>
+    </section>
+
+    <p class="status"><span class="dot"></span>Connected to Redis</p>
+  </main>
+</body>
+</html>
