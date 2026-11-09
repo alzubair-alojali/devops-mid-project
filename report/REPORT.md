@@ -233,8 +233,8 @@ It uses the same order as App 1 for the same reason: the `pip install` layer is 
 
 ## 11. Docker images
 
-- App 1: [TODO: Docker Hub link from issue #4]
-- App 2: [TODO: Docker Hub link from issue #4]
+- App 1: https://hub.docker.com/r/alzubairalojali/devopshub-app1 (`docker pull alzubairalojali/devopshub-app1:1.0`)
+- App 2: https://hub.docker.com/r/alzubairalojali/devopshub-app2 (`docker pull alzubairalojali/devopshub-app2:1.0`)
 - Redis: official image `redis:7-alpine` (https://hub.docker.com/_/redis)
 
 ## 12. Access instructions
